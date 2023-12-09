@@ -1,0 +1,68 @@
+<div class="toolbar" [class.is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="dashboard-toolbar">
+     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+     <i class="fa-solid fa-boxes-stacked fa-xl"></i>
+     <h1 class="titulo_toolbar">StockControl</h1>
+
+     <div class="propiedades_toolbar">
+
+        <ul>
+   
+            <li>
+                <button mat-icon-button>
+                    <mat-icon>help_outline</mat-icon>
+                </button>
+            </li>
+            <li>
+                <button mat-button  [matMenuTriggerFor]="menu">
+                    <mat-icon>person_outline</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                   <mat-icon>exit_to_app</mat-icon>
+                   Cerrar Sesion
+                </mat-menu>
+            </li>
+
+        </ul>
+
+     </div>
+
+    </mat-toolbar>
+
+
+
+    <mat-sidenav-container class="sidenav_container"
+                                [style.marginTop.px]="mobileQuery.matches ? 55 : 0">
+
+                <mat-sidenav #snav [mode]="mobileQuery.matches? 'over' : 'side'"
+                        [fixedInViewport]="mobileQuery.matches" fixedTopGap="55" style="width: 250px; background-color: #673ab7; color: white; border-top: 5px solid #4b288a ;">
+
+                    <mat-nav-list>
+                        
+                        <div class="profile_menu">
+                            <div class="header_menu">
+                                <img src="https://media.licdn.com/dms/image/C4E03AQGZsNg2w_fGOg/profile-displayphoto-shrink_800_800/0/1585711432763?e=1707350400&v=beta&t=8rqpAvCs74V6u2lt5G64hCOO2SrJ2a98CiPH3gEDBz4" alt="">
+                                <h2>Benjamin Rojas</h2>
+                                <h4>BNRC Solutions</h4>
+                            </div>
+                        </div>
+
+                        <div class="hola">
+                            <a mat-list-item *ngFor="let item of menuNav" [routerLink]="item.route">
+                                <mat-icon>{{ item.icon }}</mat-icon>
+                                {{ item.name }}
+
+                            </a>
+                        </div>
+                    </mat-nav-list>
+
+                </mat-sidenav>
+
+                <mat-sidenav-content>
+                    <router-outlet></router-outlet>
+                </mat-sidenav-content>
+
+
+    </mat-sidenav-container>
+
+</div>
