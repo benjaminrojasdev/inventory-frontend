@@ -62,8 +62,6 @@ export class NewCategoryComponent implements OnInit{
   
   }
 
-
-
   onCancel(){
      this.dialogRef.close(3);
   }
